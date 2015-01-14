@@ -4262,7 +4262,7 @@ hello.init({
 	// PUT https://developers.google.com/drive/v2/reference/files/update
 	// POST https://developers.google.com/drive/manage-uploads
 	function uploadDrive(p, callback){
-		
+
 		var data = {};
 
 		if( p.data && p.data instanceof window.HTMLInputElement ){
@@ -4320,6 +4320,7 @@ hello.init({
 
 					// Lets set this to an offline access to return a refresh_token
 					p.qs.access_type = 'offline';
+					p.qs.approval_prompt = 'force';
 				}
 			},
 
@@ -4341,7 +4342,7 @@ hello.init({
 				videos			: 'http://gdata.youtube.com',
 				friends			: 'https://www.google.com/m8/feeds, https://www.googleapis.com/auth/plus.login',
 				files			: 'https://www.googleapis.com/auth/drive.readonly',
-				
+
 				publish			: '',
 				publish_files	: 'https://www.googleapis.com/auth/drive',
 				create_event	: '',
@@ -4553,7 +4554,7 @@ hello.init({
 
 					// Does this userAgent and endpoint support CORS?
 					if( p.cors_support ){
-						// Deliver via 
+						// Deliver via
 						utils.xhr( p.method, utils.qs(url,qs), {
 							'content-type' : 'multipart/related; boundary="'+boundary+'"'
 						}, body, callback );
@@ -4571,6 +4572,7 @@ hello.init({
 		}
 	});
 })(hello, window);
+
 //
 // Instagram
 //
